@@ -1,0 +1,33 @@
+﻿<ul class="nav navbar-nav navbar-left">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View: <strong>@ViewData["Title"]</strong> <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a asp-controller="Home" asp-action="Index">Index</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Game</li>
+            <li><a asp-controller="PlayersEditor" asp-action="Browse">Players</a></li>
+            <li><a asp-controller="RarenessGroupsEditor" asp-action="Browse">RarenessGroups</a></li>
+            <li><a asp-controller="AbilityMetasEditor" asp-action="Browse">AbilityMetas</a></li>
+            <li><a asp-controller="AppearanceElementMetasEditor" asp-action="Browse">AppearanceElementMetas</a></li>
+            <li><a asp-controller="ArenaMetasEditor" asp-action="Browse">ArenaMetas</a></li>
+            <li><a asp-controller="BuildingMetasEditor" asp-action="Browse">BuildingMetas</a></li>
+            <li><a asp-controller="BuildingSpotMetasEditor" asp-action="Browse">BuildingSpotMetas</a></li>
+            <li><a asp-controller="WardMetasEditor" asp-action="Browse">WardMetas</a></li>
+            <li><a asp-controller="CitizenAbilityMetasEditor" asp-action="Browse">CitizenAbilityMetas</a></li>
+            <li><a asp-controller="CityMetasEditor" asp-action="Browse">CityMetas</a></li>
+            <li><a asp-controller="ClassMetasEditor" asp-action="Browse">ClassMetas</a></li>
+            <li><a asp-controller="ContractMetasEditor" asp-action="Browse">ContractMetas</a></li>
+            <li><a asp-controller="ItemMetasEditor" asp-action="Browse">ItemMetas</a></li>
+            <li><a asp-controller="TalentMetasEditor" asp-action="Browse">TalentMetas</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Master</li>
+            <li><a asp-controller="GameServersEditor" asp-action="Browse">GameServers</a></li>
+            <li><a asp-controller="RequestedInstancesEditor" asp-action="Browse">RequestedInstances</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Etc</li>
+            <li><a asp-controller="AccessKeysEditor" asp-action="Browse">AccessKeys</a></li>
+            <li><a asp-controller="JsonBlobsEditor" asp-action="Browse">JsonBlobs</a></li>
+            <li><a asp-controller="Statistics" asp-action="Index">Statistics</a></li>
+        </ul>
+    </li>
+</ul>

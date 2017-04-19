@@ -1,0 +1,19 @@
+﻿@model RequestedInstance
+
+@{
+    ViewData["Title"] = $"Edit {Model.Id}";
+}
+
+@Html.Partial("_ValidationSummary")
+
+<form asp-action="Save" method="post" class="form-horizontal" role="form">
+    @Html.HiddenFor(m => m.ETag)
+    @Html.HiddenFor(m => m.PartitionKey)
+    @Html.HiddenFor(m => m.RowKey)
+    @Html.HiddenFor(m => m.Timestamp)
+
+    @Html.ValueEditorFor(m => m.ArenaMetaId, @readonly: true)
+    @Html.ValueEditorFor(m => m.RequestedDate, @readonly: true)
+
+    @Html.Partial("_EntityActionsPartial")
+</form>

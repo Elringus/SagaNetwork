@@ -1,0 +1,34 @@
+﻿@model IEnumerable<GameServer>
+
+@{
+    ViewData["Title"] = "Game Servers";
+}
+
+@Html.Partial("_SearchEntityPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>IP</th>
+                <th>Is Updating</th>
+                <th>Active Instances</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var gameServer in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => gameServer.Ip)</td>
+                    <td>@Html.DisplayFor(modelItem => gameServer.IsUpdating)</td>
+                    <td>@Html.DisplayFor(modelItem => gameServer.ActiveInstances.Count)</td>
+                    <td>@Html.RenderEditEntityButton(gameServer.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

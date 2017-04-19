@@ -1,0 +1,12 @@
+﻿@using System.Security.Principal
+
+@{
+    ViewData["Title"] = "Statistics";
+}
+
+<div class="alert alert-warning" role="alert">
+    <h2><strong>Warning: read before using</strong></h2>
+    <p>Depending on the entity volume, page loading times of the statistics controllers may exceed 1 minute.<br />DO NOT PRESS controller buttons more than once. Also, do not refresh the results page once it's ready or access it frequently -- this may overload the DB!</p>
+</div>
+
+<a asp-action="Users" class="btn btn-primary">Users: PlayerID, CreationDate, LastLoginDate</a>

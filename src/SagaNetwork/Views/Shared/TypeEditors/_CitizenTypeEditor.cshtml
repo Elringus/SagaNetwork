@@ -1,0 +1,7 @@
+﻿@model Citizen
+
+@Html.ValueEditorFor(m => m.Id, @readonly: true)
+@Html.ValueEditorFor(m => m.RarenessGroupId, required: true)
+@Html.ValueEditorFor(m => m.CitizenGender)
+@Html.ListEditorFor(m => m.Appearance)
+@Html.ListEditorFor(m => m.Abilities)

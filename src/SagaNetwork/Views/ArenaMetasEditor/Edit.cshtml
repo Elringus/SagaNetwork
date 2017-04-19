@@ -1,0 +1,31 @@
+﻿@model ArenaMeta
+
+@{
+    ViewData["Title"] = $"Edit {Model.Id}";
+}
+
+@Html.Partial("_ValidationSummary")
+
+<form asp-action="Save" method="post" class="form-horizontal" role="form">
+    @Html.HiddenFor(m => m.ETag)
+    @Html.HiddenFor(m => m.PartitionKey)
+    @Html.HiddenFor(m => m.RowKey)
+    @Html.HiddenFor(m => m.Timestamp)
+
+    @Html.ValueEditorFor(m => m.Id, @readonly: true)
+    @Html.ValueEditorFor(m => m.Map, required: true)
+    @Html.ValueEditorFor(m => m.MaxPlayers, required: true)
+    @Html.ValueEditorFor(m => m.Mode, required: true)
+    @Html.ValueEditorFor(m => m.Icon)
+    @Html.ValueEditorFor(m => m.EndCondition)
+    @Html.ValueEditorFor(m => m.EndKillCount)
+    @Html.ValueEditorFor(m => m.EndTimeOut)
+    @Html.ValueEditorFor(m => m.EndFlagCount)
+    @Html.ValueEditorFor(m => m.IsAvailable)
+
+    @Html.Partial("_AttributesEditorPartial")
+
+    @Html.Partial("_EntityActionsPartial")
+</form>
+
+@Html.Partial("_DuplicateEntityPartial")

@@ -1,0 +1,11 @@
+﻿@model Requirement
+
+<div class="panel panel-info">
+    <div class="panel-heading"><h3 class="panel-title">@ViewData["Label"]</h3></div>
+    <div class="panel-body">
+        @Html.ListEditorFor(m => m.ClassRequirements)
+        @Html.ListEditorFor(m => m.BuildingMetaIds)
+        @Html.ListEditorFor(m => m.WardMetaIds)
+        @Html.ListEditorFor(m => m.Resources)
+    </div>
+</div>

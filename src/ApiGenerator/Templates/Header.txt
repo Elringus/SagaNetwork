@@ -1,0 +1,8 @@
+// This file is auto-generated via SagaNetwork API Generator.
+
+#pragma once
+
+#include "./Models/DbMetaModel.h"
+#include "./Models/DbMetaDescribedModel.h"
+#include "./Requests/SagaNetworkRequest.h"
+#include "GeneratedApi.generated.h"

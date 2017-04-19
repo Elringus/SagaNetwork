@@ -1,0 +1,16 @@
+﻿@model Building
+
+<div class="panel panel-info">
+    <div class="panel-heading"><h3 class="panel-title">@ViewData["Label"]</h3></div>
+    <div class="panel-body">
+        @Html.ValueEditorFor(m => m.Id, @readonly: true)
+        @Html.ValueEditorFor(m => m.MetaId, required: true)
+        @Html.ValueEditorFor(m => m.IsConstructed)
+        @Html.TypeEditorFor(m => m.ConstructionTask)
+        @Html.TypeEditorFor(m => m.ProductionTask)
+        @Html.ListEditorFor(m => m.StoredRewards)
+        @Html.ListEditorFor(m => m.AssignedCitizenIds)
+
+        @Html.Partial("_DestroyObjectPartial")
+    </div>
+</div>

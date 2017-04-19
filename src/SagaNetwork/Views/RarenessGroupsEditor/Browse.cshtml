@@ -1,0 +1,37 @@
+﻿@model IEnumerable<RarenessGroup>
+
+@{
+    ViewData["Title"] = "Rareness Groups";
+}
+
+@Html.Partial("_SearchEntityPartial")
+@Html.Partial("_AddEntityPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ProbabilityWeight</th>
+                <th>AbilityLimit</th>
+                <th>AbilityMaxLevel</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rarenessGroup in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => rarenessGroup.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => rarenessGroup.ProbabilityWeight)</td>
+                    <td>@Html.DisplayFor(modelItem => rarenessGroup.AbilityLimit)</td>
+                    <td>@Html.DisplayFor(modelItem => rarenessGroup.AbilityMaxLevel)</td>
+                    <td>@Html.RenderEditEntityButton(rarenessGroup.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<EditorAttributeMeta>
+
+@{
+    ViewData["Title"] = "Editor Attribute Metas";
+}
+
+@Html.Partial("_SearchEntityPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var attributeMata in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => attributeMata.Id)</td>
+                    <td>@Html.RenderEditEntityButton(attributeMata.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

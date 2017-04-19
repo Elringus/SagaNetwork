@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ContractMeta>
+
+@{
+    ViewData["Title"] = "Contract Metas";
+}
+
+@Html.Partial("_SearchEntityPartial")
+@Html.Partial("_AddEntityPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contractMeta in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => contractMeta.Id)</td>
+                    <td>@Html.RenderEditEntityButton(contractMeta.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

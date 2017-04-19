@@ -1,0 +1,6 @@
+﻿@model CitizenAbility
+
+@Html.ValueEditorFor(m => m.Id, @readonly: true)
+@Html.ValueEditorFor(m => m.MetaId, required: true)
+@Html.ValueEditorFor(m => m.Level)
+@Html.ValueEditorFor(m => m.Experience)

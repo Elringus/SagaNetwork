@@ -1,0 +1,8 @@
+﻿@model List<Item>
+
+@{ var itemIndex = (int)ViewData["ItemIndex"]; }
+
+@Html.ValueEditorFor(m => m[itemIndex].Id, @readonly: true)
+@Html.ValueEditorFor(m => m[itemIndex].MetaId, required: true)
+@Html.ValueEditorFor(m => m[itemIndex].StorageId)
+@Html.ValueEditorFor(m => m[itemIndex].OwningCharacterId)

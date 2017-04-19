@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CityMeta>
+
+@{
+    ViewData["Title"] = "City Metas";
+}
+
+@Html.Partial("_SearchEntityPartial")
+@Html.Partial("_AddEntityPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Wards</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cityMeta in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => cityMeta.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => cityMeta.WardMetaIds.Count)</td>
+                    <td>@Html.RenderEditEntityButton(cityMeta.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

@@ -1,0 +1,7 @@
+﻿@model List<IntRange>
+
+@{
+    var itemIndex = (int)ViewData["ItemIndex"];
+}
+
+@Html.TypeEditorFor(m => m[itemIndex])

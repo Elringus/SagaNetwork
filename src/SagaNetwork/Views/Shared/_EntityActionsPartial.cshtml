@@ -1,0 +1,12 @@
+﻿<br />
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-4">
+        <input type="submit" value="Save changes" class="btn btn-primary btn-block" />
+    </div>
+    <div class="col-md-3">
+        <a asp-action="Browse" class="btn btn-default btn-block">Cancel</a>
+    </div>
+    <div class="col-md-3">
+        <a asp-action="Delete" asp-route-entityId="@Model.Id" class="btn btn-danger btn-block">Delete</a>
+    </div>
+</div>

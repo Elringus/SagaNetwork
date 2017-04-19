@@ -1,0 +1,41 @@
+﻿@model WardMeta
+
+@{
+    ViewData["Title"] = $"Edit {Model.Id}";
+}
+
+@Html.Partial("_ValidationSummary")
+
+<form asp-action="Save" method="post" class="form-horizontal" role="form">
+    @Html.HiddenFor(m => m.ETag)
+    @Html.HiddenFor(m => m.PartitionKey)
+    @Html.HiddenFor(m => m.RowKey)
+    @Html.HiddenFor(m => m.Timestamp)
+
+    @Html.ValueEditorFor(m => m.Id, @readonly: true)
+    @using (Html.BeginCollapsableList($"BuildingSpots [{Model.BuildingSpotsMap.Count}]", "AddBuildingSpot",
+        new Dictionary<string, string> { ["wardMetaId"] = Model.Id }))
+    {
+        for (var buildingSpotIndex = 0; buildingSpotIndex < Model.BuildingSpotsMap.Count; buildingSpotIndex++)
+        {
+            using (Html.BeginCollapsableListElement("RemoveBuildingSpot",
+				new Dictionary<string, string> { ["wardMetaId"] = Model.Id, ["buildingSpotIndex"] = buildingSpotIndex.ToString() }))
+            {
+				var element = Model.BuildingSpotsMap.ElementAt(buildingSpotIndex);
+				var initialValues = new KeyValuePair<string, string>(element.Key, element.Value);
+				@Html.DictionaryItemEditorFor("BuildingSpotsMap", buildingSpotIndex, initialValues, 
+					Enumerable.Range(0, 10).ToList().ConvertAll(x => x.ToString()), ViewData["AvailableBuildingSpotMetas"])
+			}
+		}
+    }
+    @Html.TypeEditorFor(m => m.UnlockRequirement)
+    @Html.TypeEditorFor(m => m.UnlockReward)
+    @Html.ValueEditorFor(m => m.UnlockTime, required: true)
+    @Html.ValueEditorFor(m => m.IsInitiallyUnlocked)
+
+    @Html.Partial("_AttributesEditorPartial")
+
+    @Html.Partial("_EntityActionsPartial")
+</form>
+
+@Html.Partial("_DuplicateEntityPartial")

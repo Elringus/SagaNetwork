@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AccessKey>
+
+@{
+    ViewData["Title"] = "Access Keys";
+}
+
+@Html.Partial("_SearchEntityPartial")
+
+<form asp-action="GetFreeKeys" class="form-inline form-entity-browse">
+    <div class="form-group">
+        <label class="sr-only" for="count">Count</label>
+        <div class="input-group">
+            <div class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></div>
+            <input name="count" type="text" class="form-control" id="count" placeholder="Count (1-100)" required>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Get Free Keys</button>
+</form>
+
+<form asp-action="SendKeysViaEmail" class="form-inline form-entity-browse">
+    <div class="form-group">
+        <label class="sr-only" for="listId">MailChimp list ID</label>
+        <div class="input-group">
+            <div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
+            <input name="listId" type="text" class="form-control" id="listId" placeholder="MailChimp list ID" required>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Send access keys via email</button>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Is Activated</th>
+                <th>Associated Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var accessKey in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => accessKey.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => accessKey.IsActivated)</td>
+                    <td>@Html.DisplayFor(modelItem => accessKey.AssociatedEmail)</td>
+                    <td>@Html.RenderEditEntityButton(accessKey.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

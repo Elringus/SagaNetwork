@@ -1,0 +1,7 @@
+﻿@model List<TimeTask>
+
+@{ 
+    var itemIndex = (int)ViewData["ItemIndex"];
+}
+
+@Html.TypeEditorFor(m => m[itemIndex], label: $"Task {itemIndex}")

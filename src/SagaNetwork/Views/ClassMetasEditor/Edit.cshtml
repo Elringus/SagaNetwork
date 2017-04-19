@@ -1,0 +1,27 @@
+﻿@model ClassMeta
+
+@{
+    ViewData["Title"] = $"Edit {Model.Id}";
+}
+
+@Html.Partial("_ValidationSummary")
+
+<form asp-action="Save" method="post" class="form-horizontal" role="form">
+    @Html.HiddenFor(m => m.ETag)
+    @Html.HiddenFor(m => m.PartitionKey)
+    @Html.HiddenFor(m => m.RowKey)
+    @Html.HiddenFor(m => m.Timestamp)
+
+    @Html.ValueEditorFor(m => m.Id, @readonly: true)
+    @Html.ListEditorFor(m => m.ExpToLevelUp)
+    @Html.ListEditorFor(m => m.Abilities)
+    @Html.TypeEditorFor(m => m.Requirement)
+    @Html.ListEditorFor(m => m.DefaultItems)
+    @Html.ValueEditorFor(m => m.IsInitiallyAvailable)
+
+    @Html.Partial("_AttributesEditorPartial")
+
+    @Html.Partial("_EntityActionsPartial")
+</form>
+
+@Html.Partial("_DuplicateEntityPartial")

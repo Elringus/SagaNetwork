@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AppearanceElementMeta>
+
+@{
+    ViewData["Title"] = "Appearance Element Metas";
+}
+
+@Html.Partial("_SearchEntityPartial")
+@Html.Partial("_AddEntityPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Group</th>
+                <th>Gender</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appElementMeta in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => appElementMeta.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => appElementMeta.AppearanceGroup)</td>
+                    <td>@Html.DisplayFor(modelItem => appElementMeta.Gender)</td>
+                    <td>@Html.RenderEditEntityButton(appElementMeta.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

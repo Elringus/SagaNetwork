@@ -1,0 +1,12 @@
+﻿@model List<string>
+
+@{
+    ViewData["Title"] = "Access Keys Mailed";
+}
+
+<p><small>
+@foreach (var mailResult in Model)
+{
+    @mailResult<br />
+}
+</small></p>

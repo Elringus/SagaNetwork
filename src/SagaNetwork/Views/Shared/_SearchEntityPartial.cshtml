@@ -1,0 +1,10 @@
+﻿<form asp-action="Browse" class="form-inline form-entity-browse">
+    <div class="form-group">
+        <label class="sr-only" for="entityId">Entity ID</label>
+        <div class="input-group">
+            <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+            <input name="entityId" type="text" class="form-control" id="entityId" placeholder="Entity ID" value="@ViewBag.SearchId">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Search by ID</button>
+</form>

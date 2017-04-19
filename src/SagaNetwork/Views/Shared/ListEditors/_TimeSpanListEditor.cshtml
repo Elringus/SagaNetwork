@@ -1,0 +1,5 @@
+﻿@model List<TimeSpan>
+
+@{ var itemIndex = (int)ViewData["ItemIndex"]; }
+
+@Html.ValueEditorFor(m => m[itemIndex], label: $"Element {itemIndex}")

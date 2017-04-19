@@ -1,0 +1,7 @@
+﻿@model List<Building>
+
+@{ 
+    var itemIndex = (int)ViewData["ItemIndex"];
+}
+
+@Html.TypeEditorFor(m => m[itemIndex], label: $"Building {itemIndex}")

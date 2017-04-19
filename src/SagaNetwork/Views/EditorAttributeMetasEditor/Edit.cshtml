@@ -1,0 +1,43 @@
+﻿@* ReSharper disable AccessToModifiedClosure *@
+@model EditorAttributeMeta
+
+@{
+    ViewData["Title"] = $"Edit {Model.Id} Attributes";
+}
+
+@Html.Partial("_ValidationSummary")
+
+<form asp-action="Save" method="post" class="form-horizontal" role="form">
+    @Html.HiddenFor(m => m.ETag)
+    @Html.HiddenFor(m => m.PartitionKey)
+    @Html.HiddenFor(m => m.RowKey)
+    @Html.HiddenFor(m => m.Timestamp)
+
+    @Html.ValueEditorFor(m => m.Id, @readonly: true)
+    @using (Html.BeginCollapsableList($"Predefined Keys [{Model.PredefinedKeys.Count}]", "AddPredefinedKey",
+        new Dictionary<string, string> { ["metaId"] = Model.Id }))
+    {
+        for (var index = 0; index < Model.PredefinedKeys.Count; index++)
+        {
+            using (Html.BeginCollapsableListElement("RemovePredefinedKey",
+                new Dictionary<string, string> { ["metaId"] = Model.Id, ["index"] = index.ToString() }))
+            {
+                @Html.ValueEditorFor(m => m.PredefinedKeys[index], label: "PredefinedKey")
+            }
+        }
+    }
+    @using (Html.BeginCollapsableList($"Predefined Values [{Model.PredefinedValues.Count}]", "AddPredefinedValue",
+        new Dictionary<string, string> { ["metaId"] = Model.Id }))
+    {
+        for (var index = 0; index < Model.PredefinedValues.Count; index++)
+        {
+            using (Html.BeginCollapsableListElement("RemovePredefinedValue",
+                new Dictionary<string, string> { ["metaId"] = Model.Id, ["index"] = index.ToString() }))
+            {
+                @Html.ValueEditorFor(m => m.PredefinedValues[index], label: "PredefinedValue")
+            }
+        }
+    }
+
+    @Html.Partial("_EntityActionsPartial")
+</form>

@@ -1,0 +1,21 @@
+UCLASS()                                                                                                    {{#newline}}
+class WARHOLDCITY_API {{UName}} : public {{ParentUName}}                                                    {{#newline}}
+{                                                                                                           {{#newline}}
+    GENERATED_BODY()                                                                                        {{#newline}}
+                                                                                                            {{#newline}}
+public:{{#each Properties}}{{#newline}}    {{DeclarationExpression}}{{/each}}                               {{#newline}}
+                                                                                                            {{#newline}}
+    virtual void FromJson(const TSharedRef<FJsonObject>& jsonObj) override                                  {{#newline}}
+    {                                                                                                       {{#newline}}
+        Super::FromJson(jsonObj);                                                                           {{#newline}}
+{{#each Properties}}{{#newline}}        {{AssignmentExpression}}{{/each}}                                   {{#newline}}
+    }                                                                                                       {{#newline}}
+                                                                                                            {{#newline}}
+    virtual TSharedRef<FJsonObject> ToJson() override                                                       {{#newline}}
+    {                                                                                                       {{#newline}}
+        auto jsonObj = Super::ToJson();                                                                     {{#newline}}
+{{#each Properties}}{{#newline}}        {{JsonSetterExpression}}{{/each}}                                   {{#newline}}
+                                                                                                            {{#newline}}
+        return jsonObj;                                                                                     {{#newline}}
+    }                                                                                                       {{#newline}}
+};                                                                                                          {{#newline}}

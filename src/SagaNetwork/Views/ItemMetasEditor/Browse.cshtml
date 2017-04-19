@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ItemMeta>
+
+@{
+    ViewData["Title"] = "Item Metas";
+}
+
+@Html.Partial("_SearchEntityPartial")
+@Html.Partial("_AddEntityPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Class ID</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var itemMeta in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => itemMeta.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => itemMeta.ClassMetaId)</td>
+                    <td>@Html.RenderEditEntityButton(itemMeta.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

@@ -1,0 +1,6 @@
+﻿@model List<ClassRequirement>
+
+@{ var itemIndex = (int)ViewData["ItemIndex"]; }
+
+@Html.ValueEditorFor(m => m[itemIndex].ClassMetaId)
+@Html.ValueEditorFor(m => m[itemIndex].Level)

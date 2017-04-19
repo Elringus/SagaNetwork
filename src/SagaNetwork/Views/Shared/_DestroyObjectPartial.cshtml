@@ -1,0 +1,14 @@
+﻿@{
+    var entityId = (string)ViewData["EntityId"];
+    var propertyPath = (string)ViewData["PropertyPath"];
+    var propertyName = propertyPath.AfterLastDot();
+    var isCollectionMember = propertyName.Contains("[");
+}
+
+@if (!isCollectionMember)
+{
+    <a asp-action="DestroyObject" asp-route-entityId="@entityId" asp-route-objectPropertyPath="@propertyPath" class="btn btn-danger btn-sm">Remove @propertyName</a>
+}
+
+
+

@@ -1,0 +1,16 @@
+﻿
+@{
+    var entityId = (string)ViewData["EntityId"];
+    var propertyPath = (string)ViewData["PropertyPath"];
+    var propertyName = propertyPath.AfterLastDot();
+}
+
+<div class="form-group">
+    <label class="col-md-2 control-label" for="@propertyPath" title="@propertyPath">@propertyName</label>
+    <div class="col-md-10" id="@propertyPath">
+        <a asp-action="CreateObject" asp-route-entityId="@entityId" asp-route-objectPropertyPath="@propertyPath" class="btn btn-default btn-sm">Create new</a>
+    </div>
+</div>
+
+
+

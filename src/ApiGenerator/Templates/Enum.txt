@@ -1,0 +1,6 @@
+UENUM(BlueprintType)                                                                                                 {{#newline}}
+enum class {{UName}} : uint8                                                                                         {{#newline}}
+{{{#each EnumValues}}{{#newline}}    {{this}},{{/each}}                                                              {{#newline}}
+                                                                                                                     {{#newline}}
+};                                                                                                                   {{#newline}}
+FORCEINLINE uint8 GetTypeHash(const {{UName}}& enumValue) { return (uint8)enumValue; }                               {{#newline}}

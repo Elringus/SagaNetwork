@@ -1,0 +1,5 @@
+﻿@{
+    var entityId = (string)ViewData["RenderEditEntityButton_EntityID"];
+}
+@* ReSharper disable once Mvc.ActionNotResolved *@
+<a asp-action="Edit" asp-route-entityId="@entityId" title="Edit entity" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>

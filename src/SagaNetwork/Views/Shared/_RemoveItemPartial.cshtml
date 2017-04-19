@@ -1,0 +1,5 @@
+﻿@{
+    var route =(string) ViewData["BeginCollapsableListElement_RemoveItemController"];
+    var routeData = (IDictionary<string, string>)ViewData["BeginCollapsableListElement_AdditionalArguments"];
+}
+<a asp-action="@route" asp-all-route-data="@routeData" class="btn btn-danger btn-sm">Remove item</a>

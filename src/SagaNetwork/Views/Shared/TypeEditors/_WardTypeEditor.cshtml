@@ -1,0 +1,7 @@
+﻿@model Ward
+
+@Html.ValueEditorFor(m => m.Id, @readonly: true)
+@Html.ValueEditorFor(m => m.MetaId, required: true)
+@Html.ListEditorFor(m => m.BuildingSpots)
+@Html.ValueEditorFor(m => m.IsUnlocked)
+@Html.TypeEditorFor(m => m.UnlockTask)

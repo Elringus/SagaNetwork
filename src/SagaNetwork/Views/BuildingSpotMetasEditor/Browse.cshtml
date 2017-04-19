@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BuildingSpotMeta>
+
+@{
+    ViewData["Title"] = "Building Spot Metas";
+}
+
+@Html.Partial("_SearchEntityPartial")
+@Html.Partial("_AddEntityPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Size</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var buildingSpotMeta in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => buildingSpotMeta.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => buildingSpotMeta.Size)</td>
+                    <td>@Html.RenderEditEntityButton(buildingSpotMeta.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

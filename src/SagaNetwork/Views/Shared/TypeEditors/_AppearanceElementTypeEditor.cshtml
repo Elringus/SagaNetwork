@@ -1,0 +1,5 @@
+﻿@model AppearanceElement
+
+@Html.ValueEditorFor(m => m.Id, @readonly: true)
+@Html.ValueEditorFor(m => m.MetaId, required: true)
+@Html.ListEditorFor(m => m.Variations)

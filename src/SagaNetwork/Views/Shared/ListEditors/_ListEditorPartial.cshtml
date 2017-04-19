@@ -1,0 +1,26 @@
+﻿@using System.Collections
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
+
+@model IList
+
+@{
+    var entityId = (string)ViewData["EntityId"];
+    var propertyPath = (string)ViewData["PropertyPath"];
+    var label = (string)ViewData["Label"];
+}
+
+@using (Html.BeginCollapsableList($"{label} [{Model.Count}]", "AddItemToList",
+    new Dictionary<string, string> { ["entityId"] = entityId, ["listPropertyPath"] = propertyPath }))
+{
+    for (var itemIndex = 0; itemIndex < Model.Count; itemIndex++)
+    {
+        using (Html.BeginCollapsableListElement("RemoveItemFromList",
+            new Dictionary<string, string> { ["entityId"] = entityId, ["itemIndex"] = itemIndex.ToString(), ["listPropertyPath"] = propertyPath }))
+        {
+            var listGenericTypeName = Model.GetType().GetGenericArguments()[0].Name;
+            var viewDataDictionary = new ViewDataDictionary(ViewData);
+            viewDataDictionary["ItemIndex"] = itemIndex;
+            @Html.Partial($"ListEditors/_{listGenericTypeName}ListEditor", Convert.ChangeType(Model, Model.GetType()), viewDataDictionary)
+        }
+    }
+}

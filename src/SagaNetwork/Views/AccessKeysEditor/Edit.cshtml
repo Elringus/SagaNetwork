@@ -1,0 +1,22 @@
+﻿@model AccessKey
+
+@{
+    ViewData["Title"] = $"Edit {Model.Id}";
+}
+
+@Html.Partial("_ValidationSummary")
+
+<form asp-action="Save" method="post" class="form-horizontal" role="form">
+    @Html.HiddenFor(m => m.ETag)
+    @Html.HiddenFor(m => m.PartitionKey)
+    @Html.HiddenFor(m => m.RowKey)
+    @Html.HiddenFor(m => m.Timestamp)
+
+    @Html.ValueEditorFor(m => m.Id, @readonly: true, label: "Key")
+    @Html.ValueEditorFor(m => m.IsActivated, @readonly: true)
+    @Html.ValueEditorFor(m => m.GenerationDate, @readonly: true)
+    @Html.ValueEditorFor(m => m.ActivationDate, @readonly: true)
+    @Html.ValueEditorFor(m => m.AssociatedEmail)
+
+    @Html.Partial("_EntityActionsPartial")
+</form>

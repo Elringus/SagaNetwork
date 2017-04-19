@@ -1,0 +1,6 @@
+﻿@{
+    var route = (string)ViewData["BeginCollapsableList_AddItemController"];
+    var routeData = (IDictionary<string, string>)ViewData["BeginCollapsableList_AdditionalArguments"];
+    var label = (string)ViewData["BeginCollapsableList_AddItemButtonLabel"];
+}
+<a asp-action="@route" asp-all-route-data="@routeData" class="btn btn-default btn-sm">@label</a>

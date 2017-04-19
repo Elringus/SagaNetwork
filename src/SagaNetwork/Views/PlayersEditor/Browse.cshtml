@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Player>
+
+@{
+    ViewData["Title"] = "Players";
+}
+
+@Html.Partial("_SearchEntityPartial")
+<form asp-action="CreatePlayer" class="form-inline form-entity-browse">
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></div>
+            <input name="idAndPswd" type="text" class="form-control" id="playerId" placeholder="PlayerId;Password">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Create player</button>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Created</th>
+				<th>Last Login</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var player in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => player.Id)</td>
+					<td>@Html.DisplayFor(modelItem => player.CreationDate)</td>
+                    <td>@Html.DisplayFor(modelItem => player.LastLoginDate)</td>
+                    <td>@Html.RenderEditEntityButton(player.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

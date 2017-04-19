@@ -1,0 +1,28 @@
+﻿@model Player
+
+@{
+    ViewData["Title"] = $"Edit {Model.Id}";
+}
+
+@Html.Partial("_ValidationSummary")
+
+<form asp-action="Save" method="post" class="form-horizontal" role="form">
+    @Html.HiddenFor(m => m.ETag)
+    @Html.HiddenFor(m => m.PartitionKey)
+    @Html.HiddenFor(m => m.RowKey)
+    @Html.HiddenFor(m => m.Timestamp)
+
+    @Html.ValueEditorFor(m => m.Id, @readonly: true)
+    @Html.ValueEditorFor(m => m.PasswordHash, @readonly: true)
+    @Html.ValueEditorFor(m => m.CreationDate, @readonly: true)
+    @Html.ValueEditorFor(m => m.LastLoginDate, @readonly: true)
+    @Html.TypeEditorFor(m => m.City)
+    @Html.ListEditorFor(m => m.Resources)
+    @Html.ListEditorFor(m => m.Items)
+    @Html.ListEditorFor(m => m.Characters)
+    @Html.ValueEditorFor(m => m.SelectedCharacterIndex)
+    @Html.ListEditorFor(m => m.Citizens)
+    @Html.ValueEditorFor(m => m.CitizenSlots)
+
+    @Html.Partial("_EntityActionsPartial")
+</form>

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<AccessKey>
+
+@{
+    ViewData["Title"] = "Access Key List";
+}
+
+<p><small>
+@foreach (var accessKey in Model)
+{
+    @accessKey.Id<br />
+}
+</small></p>

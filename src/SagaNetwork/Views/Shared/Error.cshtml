@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Error";
+    var errorDescription = ViewBag?.ErrorDescription ?? "An error occurred while processing your request. Shit happens. Please try again.";
+}
+
+<div class="alert alert-danger" role="alert">
+    <h2><strong>Error</strong></h2>
+    <p>@Html.Raw(errorDescription)</p>
+</div>

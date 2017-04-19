@@ -1,0 +1,32 @@
+﻿@model IEnumerable<RequestedInstance>
+
+@{
+    ViewData["Title"] = "Requested Instances";
+}
+
+@Html.Partial("_SearchEntityPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Arena</th>
+                <th>Requested Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var requestedInstance in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => requestedInstance.ArenaMetaId)</td>
+                    <td>@Html.DisplayFor(modelItem => requestedInstance.RequestedDate)</td>
+                    <td>@Html.RenderEditEntityButton(requestedInstance.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

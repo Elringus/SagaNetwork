@@ -1,0 +1,25 @@
+﻿@model RarenessGroup
+
+@{
+    ViewData["Title"] = $"Edit {Model.Id}";
+}
+
+@Html.Partial("_ValidationSummary")
+
+<form asp-action="Save" method="post" class="form-horizontal" role="form">
+    @Html.HiddenFor(m => m.ETag)
+    @Html.HiddenFor(m => m.PartitionKey)
+    @Html.HiddenFor(m => m.RowKey)
+    @Html.HiddenFor(m => m.Timestamp)
+
+    @Html.ValueEditorFor(m => m.Id, @readonly: true)
+    @Html.ValueEditorFor(m => m.ProbabilityWeight, required: true)
+    @Html.ValueEditorFor(m => m.AbilityLimit, required: true)
+    @Html.ValueEditorFor(m => m.AbilityMaxLevel, required: true)
+
+    @Html.Partial("_AttributesEditorPartial")
+
+    @Html.Partial("_EntityActionsPartial")
+</form>
+
+@Html.Partial("_DuplicateEntityPartial")

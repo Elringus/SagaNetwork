@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TalentMeta>
+
+@{
+    ViewData["Title"] = "Talent Metas";
+}
+
+@Html.Partial("_SearchEntityPartial")
+@Html.Partial("_AddEntityPartial")
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var talentMeta in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => talentMeta.Id)</td>
+                    <td>@Html.RenderEditEntityButton(talentMeta.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

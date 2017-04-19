@@ -1,0 +1,5 @@
+﻿@model List<int>
+
+@{ var itemIndex = (int)ViewData["ItemIndex"]; }
+
+@Html.ValueEditorFor(m => m[itemIndex], label: $"Element {itemIndex}")

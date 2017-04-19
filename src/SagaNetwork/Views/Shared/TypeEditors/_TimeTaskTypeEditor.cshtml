@@ -1,0 +1,12 @@
+﻿@model TimeTask
+
+<div class="panel panel-info">
+    <div class="panel-heading"><h3 class="panel-title">@ViewData["Label"]</h3></div>
+    <div class="panel-body">
+        @Html.ValueEditorFor(m => m.TaskDuration)
+        @Html.ValueEditorFor(m => m.LastCheckDate)
+        @Html.ValueEditorFor(m => m.RemainingTime)
+
+        @Html.Partial("_DestroyObjectPartial")
+    </div>
+</div>

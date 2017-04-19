@@ -1,0 +1,39 @@
+﻿@model JsonBlob
+
+@{
+    ViewData["Title"] = $"Edit {Model.Id}";
+}
+
+@Html.Partial("_ValidationSummary")
+
+<form asp-action="Save" method="post" class="form-horizontal" role="form">
+    @Html.HiddenFor(m => m.ETag)
+    @Html.HiddenFor(m => m.PartitionKey)
+    @Html.HiddenFor(m => m.RowKey)
+    @Html.HiddenFor(m => m.Timestamp)
+
+    @Html.ValueEditorFor(m => m.Id, @readonly: true)
+    <div class="form-group">
+        <label for="JsonText" class="col-md-2 control-label">JSON text</label>
+        <div class="col-md-10">
+            <textarea class="form-control" rows="10" id="JsonText" name="JsonText">@ViewBag.JsonText</textarea>
+        </div>
+    </div>
+
+    @Html.Partial("_EntityActionsPartial")
+</form>
+
+<form method="post" asp-action="OverwriteJsonBlob" asp-route-entityId="@Model.Id" enctype="multipart/form-data" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-offset-5 col-md-4">
+            <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></div>
+                <input type="file" name="file" class="form-control" required />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary btn-block">Overwrite JSON file</button>
+        </div>
+    </div>
+</form>
+

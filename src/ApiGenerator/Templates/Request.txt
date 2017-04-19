@@ -1,0 +1,27 @@
+UCLASS()                                                                                                                                                       {{#newline}}
+class WARHOLDCITY_API {{UName}} : public {{ParentUName}}                                                                                                       {{#newline}}
+{                                                                                                                                                              {{#newline}}
+    GENERATED_BODY()                                                                                                                                           {{#newline}}
+                                                                                                                                                               {{#newline}}
+public:{{#if HasResponseData}}{{#each Properties}}{{#newline}}    {{DeclarationExpression}}{{/each}}                                                           {{#newline}}
+{{/if}}                                                                                                                                                        {{#newline}}
+    UFUNCTION(BlueprintCallable, Category = "Saga Network|Requests", meta = (DisplayName = "Create{{ControllerName}}Request", WorldContext = "worldContext"))  {{#newline}}
+    static {{UName}}* Create({{RequestArgumentsExpression}})                                                                                                   {{#newline}}
+    {                                                                                                                                                          {{#newline}}
+        auto world = GEngine->GetWorldFromContextObject(worldContext);                                                                                         {{#newline}}
+        auto request = NewObject<{{UName}}>(world);                                                                                                            {{#newline}}
+        auto jsonObj = request->GetRequestJson();                                                                                                              {{#newline}}
+{{#each RequestArguments}}{{#newline}}        {{JsonSetterExpression}}{{/each}}                                                                                {{#newline}}
+                                                                                                                                                               {{#newline}}
+        request->ControllerName = "{{ControllerName}}";                                                                                                        {{#newline}}
+                                                                                                                                                               {{#newline}}
+        return request;                                                                                                                                        {{#newline}}
+    }{{#if HasResponseData}}                                                                                                                                   {{#newline}}
+                                                                                                                                                               {{#newline}}
+protected:                                                                                                                                                     {{#newline}}
+    virtual void OnResponse() override                                                                                                                         {{#newline}}
+    {                                                                                                                                                          {{#newline}}
+        auto jsonObj = GetResponseJson();                                                                                                                      {{#newline}}
+{{#each Properties}}{{#newline}}        {{AssignmentExpression}}{{/each}}                                                                                      {{#newline}}
+    }{{/if}}                                                                                                                                                   {{#newline}}
+};                                                                                                                                                             {{#newline}}

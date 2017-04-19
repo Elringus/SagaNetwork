@@ -1,0 +1,6 @@
+﻿@model BuildingSpot
+
+@Html.ValueEditorFor(m => m.Id, @readonly: true)
+@Html.ValueEditorFor(m => m.MetaId, required: true)
+@Html.ValueEditorFor(m => m.Address)
+@Html.TypeEditorFor(m => m.Building) 

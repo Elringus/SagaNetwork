@@ -1,0 +1,16 @@
+﻿@using (Html.BeginCollapsableList($"Attributes [{Model.Attributes.Count}]", "AddAttribute", new Dictionary<string, string> { ["entityId"] = Model.Id }))
+{
+    for (var attributeIndex = 0; attributeIndex < Model.Attributes.Count; attributeIndex++)
+    {
+        using (Html.BeginCollapsableListElement("RemoveAttribute", new Dictionary<string, string> { ["entityId"] = Model.Id, ["attributeIndex"] = attributeIndex.ToString() }))
+        {
+            var element = ((Dictionary<string, string>)Model.Attributes).ElementAt(attributeIndex);
+            var initialValues = new KeyValuePair<string, string>(element.Key, element.Value);
+            @Html.DictionaryItemEditorFor("Attributes", attributeIndex, initialValues, ViewData["PredefinedAttributeKeys"], ViewData["PredefinedAttributeValues"])
+        }
+    }
+
+    <li class="list-group-item">
+        <a asp-controller="EditorAttributeMetasEditor" asp-action="Edit" asp-route-entityId="@Model.FullTableName" class="btn btn-default btn-sm">Edit Predefined Attributes</a>
+    </li>
+}

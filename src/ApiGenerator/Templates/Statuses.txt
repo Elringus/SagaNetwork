@@ -1,0 +1,9 @@
+UENUM(BlueprintType)                                                                                                 {{#newline}}
+enum class EResponseStatus : uint8                                                                                   {{#newline}}
+{{{#each StatusNames}}{{#newline}}    {{this}},{{/each}}                                                             {{#newline}}
+                                                                                                                     {{#newline}}
+    // API-special statuses.                                                                                         {{#newline}}
+    Pending,                                                                                                         {{#newline}}
+    NetFail                                                                                                          {{#newline}}
+};                                                                                                                   {{#newline}}
+FORCEINLINE uint8 GetTypeHash(const EResponseStatus& responseStatus) { return (uint8)responseStatus; }               {{#newline}}

@@ -1,0 +1,15 @@
+﻿@model Reward
+
+<div class="panel panel-info">
+    <div class="panel-heading"><h3 class="panel-title">@ViewData["Label"]</h3></div>
+    <div class="panel-body">
+        @Html.ValueEditorFor(m => m.Probability, required: true)
+        @Html.ListEditorFor(m => m.Resources)
+        @Html.ListEditorFor(m => m.ResourceDeltas)
+        @Html.ListEditorFor(m => m.ItemMetaIds)
+        @Html.ValueEditorFor(m => m.Experience)
+        @Html.ValueEditorFor(m => m.ExperienceDelta)
+        @Html.ValueEditorFor(m => m.RandomCitizens)
+        @Html.ValueEditorFor(m => m.CitizenSlots)
+    </div>
+</div>

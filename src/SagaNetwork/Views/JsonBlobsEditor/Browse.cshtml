@@ -1,0 +1,40 @@
+﻿@model IEnumerable<JsonBlob>
+
+@{
+    ViewData["Title"] = "JSON blobs";
+}
+
+@Html.Partial("_SearchEntityPartial")
+
+<form method="post" asp-action="UploadJsonBlobs" enctype="multipart/form-data" class="form-inline form-entity-browse">
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span></div>
+            <input type="file" name="files" class="form-control" multiple required />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Upload JSON files</button>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var jsonBlob in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => jsonBlob.Id)</td>
+                    <td>@Html.RenderEditEntityButton(jsonBlob.Id)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_BrowseLimitPartial")
+@Html.Partial("_NotFoundPartial")

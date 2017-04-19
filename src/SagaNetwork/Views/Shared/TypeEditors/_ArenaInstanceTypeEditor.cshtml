@@ -1,0 +1,13 @@
+﻿@model ArenaInstance
+
+<div class="panel panel-info">
+    <div class="panel-heading"><h3 class="panel-title">@ViewData["Label"]</h3></div>
+    <div class="panel-body">
+        @Html.ValueEditorFor(m => m.Id, @readonly: true)
+        @Html.ValueEditorFor(m => m.MetaId, required: true)
+        @Html.ValueEditorFor(m => m.Port)
+        @Html.ValueEditorFor(m => m.FreeSlots)
+        @Html.ValueEditorFor(m => m.StartedDate)
+        @Html.ValueEditorFor(m => m.IsOpen)
+    </div>
+</div>

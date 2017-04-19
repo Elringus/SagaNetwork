@@ -1,0 +1,21 @@
+USTRUCT(BlueprintType)                                                                                                     {{#newline}}
+struct WARHOLDCITY_API {{UName}}{{#if HasParent}} : public {{ParentUName}}{{/if}}                                          {{#newline}}
+{                                                                                                                          {{#newline}}
+    GENERATED_USTRUCT_BODY()                                                                                               {{#newline}}
+{{#each Properties}}{{#newline}}    {{DeclarationExpression}}{{/each}}                                                     {{#newline}}
+                                                                                                                           {{#newline}}
+    {{UName}}() { }                                                                                                        {{#newline}}
+                                                                                                                           {{#newline}}
+    {{UName}}(const TSharedRef<FJsonObject>& jsonObj){{#if HasParent}}                                                     {{#newline}}
+        : Super(jsonObj){{/if}}                                                                                            {{#newline}}
+    {{{#each Properties}}{{#newline}}        {{AssignmentExpression}}{{/each}}                                             {{#newline}}
+    }                                                                                                                      {{#newline}}
+                                                                                                                           {{#newline}}
+    TSharedRef<FJsonObject> ToJson()                                                                                       {{#newline}}
+    {                                                                                                                      {{#newline}}
+        TSharedRef<FJsonObject> jsonObj = {{#if HasParent}}Super::ToJson(){{#else}}MakeShareable(new FJsonObject()){{/if}};{{#newline}}
+{{#each Properties}}{{#newline}}        {{JsonSetterExpression}}{{/each}}                                                  {{#newline}}
+                                                                                                                           {{#newline}}
+        return jsonObj;                                                                                                    {{#newline}}
+    }                                                                                                                      {{#newline}}
+};                                                                                                                         {{#newline}}
